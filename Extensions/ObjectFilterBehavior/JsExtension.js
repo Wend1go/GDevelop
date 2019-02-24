@@ -64,34 +64,42 @@ module.exports = {
         _("Set blur filter on object"),
         _("Set a blur filter to the object."),
         _(
-          "Set blur filter on object _PARAM0_ with amount _PARAM2_"
+          "Set blur filter on object _PARAM0_"
         ),
-        _("Blur filter"),
+        _("Filters"),
         "JsPlatform/Extensions/take_screenshot24.png",
         "JsPlatform/Extensions/take_screenshot32.png"
       )
       .addParameter("object", _("Object"), "", false)
       .addParameter("behavior", _("Behavior"), "ObjectFilterBehavior", false)
-      .addParameter("expression", _("Amount"), "", false)
+      .addParameter("expression", _("(optional) Strength"), "", false)
+      .setDefaultValue(8)
+      .addParameter("expression", _("(optional) Quality"), "", false)
+      .setDefaultValue(4)
+      .addParameter("expression", _("(optional) Resolution"), "", false)
+      .setDefaultValue(0)
+      .addParameter("expression", _("(optional) Kernel size (5, 7, 9, 11, 13, 15)"), "", false)
+      .setDefaultValue(5)
       .getCodeExtraInformation()
       .setFunctionName("setBlurFilter");
 
       behavior
       .addAction(
-        "RemoveBlurFilter",
-        _("Remove blur filter from object"),
-        _("Remove the blur filter from the object."),
+        "RemoveFilter",
+        _("Remove filter from object"),
+        _("Remove the a filter from the object."),
         _(
-          "Remove Blur filter from object _PARAM0_"
+          "Remove filter _PARAM2_ from object _PARAM0_"
         ),
-        _("Blur filter"),
+        _(""),
         "JsPlatform/Extensions/take_screenshot24.png",
         "JsPlatform/Extensions/take_screenshot32.png"
       )
       .addParameter("object", _("Object"), "", false)
       .addParameter("behavior", _("Behavior"), "ObjectFilterBehavior", false)
+      .addParameter("stringWithSelector", _("Filter"), "[\"BlurFilter\"]", false)
       .getCodeExtraInformation()
-      .setFunctionName("removeBlurFilter");
+      .setFunctionName("removeFilter");
 
     return extension;
   },
