@@ -62,7 +62,7 @@ module.exports = {
       .addAction(
         "SetBlurFilter",
         _("Set blur filter on object"),
-        _("Set a blur filter to the object."),
+        _("Set a blur filter on the object."),
         _(
           "Set blur filter on object _PARAM0_"
         ),
@@ -85,6 +85,25 @@ module.exports = {
 
       behavior
       .addAction(
+        "SetNoiseFilter",
+        _("Set noise filter on object"),
+        _("Set a noise filter on the object."),
+        _(
+          "Set noise filter on object _PARAM0_"
+        ),
+        _("Filters"),
+        "JsPlatform/Extensions/take_screenshot24.png",
+        "JsPlatform/Extensions/take_screenshot32.png"
+      )
+      .addParameter("object", _("Object"), "", false)
+      .addParameter("behavior", _("Behavior"), "ObjectFilterBehavior", false)
+      .addParameter("expression", _("(optional) Intensity (between 0 and 1)"), "", false)
+      .setDefaultValue(8)
+      .getCodeExtraInformation()
+      .setFunctionName("setNoiseFilter");
+
+      behavior
+      .addAction(
         "RemoveFilter",
         _("Remove filter from object"),
         _("Remove the a filter from the object."),
@@ -97,7 +116,7 @@ module.exports = {
       )
       .addParameter("object", _("Object"), "", false)
       .addParameter("behavior", _("Behavior"), "ObjectFilterBehavior", false)
-      .addParameter("stringWithSelector", _("Filter"), "[\"BlurFilter\"]", false)
+      .addParameter("stringWithSelector", _("Filter"), "[\"BlurFilter\",\"NoiseFilter\"]", false)
       .getCodeExtraInformation()
       .setFunctionName("removeFilter");
 
